@@ -110,7 +110,9 @@ pr_curve(list(pred_score),list(test_lable),feature+'_PR_curve.jpg')
 The csv file of predicted score.
 
 ```
-pred_df = pd.DataFrame({'Predict score':pred_score,'Verified':test_lable})
+pred_score = np.mean(y_proba_all,axis=0)
+pred_df = pd.DataFrame({'Predict score':pred_score,'Verified':test_lable})	
+
 ```
 
 
