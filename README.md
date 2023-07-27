@@ -57,7 +57,8 @@ validation_performance.insert(0,'Category',['fold1','fold2','fold3','fold4','fol
 ```
 ROC_5_fold(y_pred_valid_all,y_verified_valid_all,feature_name+'_ROC_5_fold.jpg')
 ```
-![ ESM_ROC_5_fold.jpg](figure/ESM_ROC_5_fold.jpg)
+
+![ESM_ROC_5_fold.jpg](figure/ESM_ROC_5_fold.jpg)
 
 * A matrix contains the result of the test performance.
 ```
@@ -81,8 +82,8 @@ auc_pred(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_ROC
 ```
 pr_curve(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_PR_curve.jpg')
 ```
-![ ESM_PR_curve.jpg](figure/ESM_PR_curve.jpg)
 
+! [ESM_PR_curve.jpg] (figure/ESM_PR_curve.jpg)
 
 * The CSV file of predicted score.
 
@@ -116,7 +117,6 @@ pr_curve(list(pred_score),list(test_lable),feature+'_PR_curve.jpg')
 ```
 pred_score = np.mean(y_proba_all,axis=0)
 pred_df = pd.DataFrame({'Predict score':pred_score,'Verified':test_lable})	
-
 ```
 
 
