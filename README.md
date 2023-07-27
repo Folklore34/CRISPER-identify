@@ -21,7 +21,7 @@ The composition of positive samples and negative samples are listed below.
 
 `719 Class II CRISPR-Cas accessory proteins / Class I CRIPSR-Case `
 
-## Test data
+## Independent test data
 
 Totally,102 positive samples were collected and the composition of negative samples are listed below.
 >* BEST (18)  
@@ -78,7 +78,7 @@ test_performance=performance(test_data.iloc[:,0],test_pred_score)
 ```
 
 
-## Test set
+## Independent test set
 You need to input the corresponding test data file, feature name and the direction path of the training model.
 
 The output contains:
