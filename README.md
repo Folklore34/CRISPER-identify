@@ -38,19 +38,12 @@ Totally,330 negative samples were collected and the composition of negative samp
 Usages
 -----
 First, you need to download and prepare the data that you require form train data set. 
-After preparing the features in training dataset, download the code folder. Before utilizing the python scripts, you need to input the corresponding positive samples file, negative samples file and feature name. For using the ESM feature, if you want to decide the columns of feature selections in advance, you also need to input in `mrmrK`.  
+After preparing the features in training dataset, download the code folder.  
+Before utilizing the python scripts, you need to input the corresponding positive samples file, negative samples file and feature name. For using the ESM feature, if you want to decide the columns of feature selections in advance, you also need to input in `mrmrK`.  
 
 The output will contain:
 
 * A matrix demonstrates validation performances of 5-fold cross validation. 
-
-```
-metrics_cols = ['PRE','REC','SPE','F1_score','ACC','MCC','AUC']
-validation_performance=pd.DataFrame(per,columns=metrics_cols)
-validation_performance.loc[5]=list(mean_per)
-validation_performance.loc[6]=list(np.std(per,axis=0))
-validation_performance.insert(0,'Category',['fold1','fold2','fold3','fold4','fold5','mean','std'])
-```
 
 * The ROC curve of the training dataset based on the result of cross validation.
 
@@ -61,37 +54,20 @@ ROC_5_fold(y_pred_valid_all,y_verified_valid_all,feature_name+'_ROC_5_fold.jpg')
 ![ESM_ROC_5_fold.jpg](figure/ESM_ROC_5_fold.jpg)
 
 * A matrix contains the result of the test performance.
-```
-test_performance=performance(test_data.iloc[:,0],test_pred_score)
-test_metrics = {}
-for i,v in enumerate(metrics_cols):
-    test_metrics[v] = test_performance[i]
-test_performance = pd.DataFrame.from_dict(test_metrics,orient='index').T
-test_performance.to_csv(feature_name+'_Test_Performance.csv',index=None)
-```
 
 * The ROC curve of the test dataset.
 
-```
-auc_pred(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_ROC.jpg')
-```
+
 ![ESM_Test_ROC.jpg](figure/ESM_Test_ROC.jpg)
 
 * The precision/recall curve.
 
-```
-pr_curve(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_PR_curve.jpg')
-```
 
 ![ESM_Test_PR_curve.jpg](figure/ESM_Test_PR_curve.jpg)
 
 * The CSV file of predicted score.
 
-```pred_test=pd.DataFrame({'Predict score':test_pred_score,'Verified':test_data.iloc[:,0]}).reset_index(drop=True)
-pred_test.to_csv(feature_name+'_Test_Pred_Score.csv',index=None)
 
-test_performance=performance(test_data.iloc[:,0],test_pred_score)
-```
 
 
 
@@ -102,24 +78,15 @@ The output contains:
 
 * The ROC image of the test dataset.
 
-```
-roc_curve(list(test_lable),list(pred_score))
-```
 
 ![ESM_test_ROC.jpg](figure/ESM_test_ROC.jpg)
 * The precision/recall curve.
 
-```
-pr_curve(list(pred_score),list(test_lable),feature+'_PR_curve.jpg')
-```
+
 
 ![ESM_PR_curve.jpg](figure/ESM_PR_curve.jpg)
 * The csv file of predicted score.
 
-```
-pred_score = np.mean(y_proba_all,axis=0)
-pred_df = pd.DataFrame({'Predict score':pred_score,'Verified':test_lable})	
-```
 
 # Reference
 Our work is based on the following literature.  
