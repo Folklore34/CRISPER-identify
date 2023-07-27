@@ -121,7 +121,9 @@ pred_score = np.mean(y_proba_all,axis=0)
 pred_df = pd.DataFrame({'Predict score':pred_score,'Verified':test_lable})	
 ```
 
-
+# Reference
+Our work is based on the following literature.  
+PreAcrs: a machine learning framework for identifying anti-CRISPR proteins. [https://doi.org/10.1186/s12859-022-04986-3]
 
 
 
