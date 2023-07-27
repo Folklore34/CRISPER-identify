@@ -37,4 +37,19 @@ Totally,330 negative samples were collected and the composition of positive samp
 
 Usages
 -----
+First, you need to download and prepare the data that you require form train data set. 
+After preparing the features in training dataset, download the code folder. Before utilizing the python scripts, you need to input the corresponding positive samples file, negative samples file and feature name. For using the ESM feature, if you want to decide the columns of feature selections in advance, you also need to input in `mrmrK`.  
+
+The output includes:
+
+Validation performances of 5-fold cross validation. (training set)  
+Test performance.  
+
+The ROC image of the training dataset.
+
+The ROC image and test predict score of the test dataset.
+
+
+
+
 
