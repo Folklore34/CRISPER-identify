@@ -35,11 +35,6 @@ Totally,330 negative samples were collected and the composition of positive samp
 `Class II CRISPR-Cas accessory proteins / Class I CRIPSR-Cas`
 
 
-Instructions and potential outputs
+Usages
 -----
-```
-metrics ['PRE','SN','SP','F_score','ACC','MCC','AUC']
-validation_perfromance=premodel.metrix(y_proba_valid_all,y_verified_valid_all)
-validation_perfromance
-```
-And the results is here.
+
