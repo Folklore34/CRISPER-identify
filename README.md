@@ -44,7 +44,8 @@ The output will contain:
 
 * A matrix demonstrates validation performances of 5-fold cross validation. 
 
-```metrics_cols = ['PRE','REC','SPE','F1_score','ACC','MCC','AUC']
+```
+metrics_cols = ['PRE','REC','SPE','F1_score','ACC','MCC','AUC']
 validation_performance=pd.DataFrame(per,columns=metrics_cols)
 validation_performance.loc[5]=list(mean_per)
 validation_performance.loc[6]=list(np.std(per,axis=0))
@@ -58,12 +59,11 @@ ROC_5_fold(y_pred_valid_all,y_verified_valid_all,feature_name+'_ROC_5_fold.jpg')
 ```
 
 * A matrix contains the result of the test performance.
-```test_performance=performance(test_data.iloc[:,0],test_pred_score)
-
+```
+test_performance=performance(test_data.iloc[:,0],test_pred_score)
 test_metrics = {}
 for i,v in enumerate(metrics_cols):
     test_metrics[v] = test_performance[i]
-
 test_performance = pd.DataFrame.from_dict(test_metrics,orient='index').T
 test_performance.to_csv(feature_name+'_Test_Performance.csv',index=None)
 ```
@@ -74,13 +74,13 @@ test_performance.to_csv(feature_name+'_Test_Performance.csv',index=None)
 auc_pred(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_ROC.jpg')
 ```
 
-The precision/recall curve.
+* The precision/recall curve.
 
 ```
 pr_curve(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_PR_curve.jpg')
 ```
 
-The CSV file of predicted score.
+* The CSV file of predicted score.
 
 ```pred_test=pd.DataFrame({'Predict score':test_pred_score,'Verified':test_data.iloc[:,0]}).reset_index(drop=True)
 pred_test.to_csv(feature_name+'_Test_Pred_Score.csv',index=None)
@@ -95,19 +95,19 @@ You need to input the corresponding test data file, feature name and the directi
 
 The output contains:
 
-The ROC image of the test dataset.
+* The ROC image of the test dataset.
 
 ```
 roc_curve(list(test_lable),list(pred_score))
 ```
 
-The precision/recall curve.
+* The precision/recall curve.
 
 ```
 pr_curve(list(pred_score),list(test_lable),feature+'_PR_curve.jpg')
 ```
 
-The csv file of predicted score.
+* The csv file of predicted score.
 
 ```
 pred_score = np.mean(y_proba_all,axis=0)
