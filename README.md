@@ -23,7 +23,7 @@ The composition of positive samples and negative samples are listed below.
 
 Test data
 ----
-Totally,102 positive samples were collected and the composition of positive samples are listed below.
+Totally,102 positive samples were collected and the composition of negative samples are listed below.
 >* BEST (18)  
 >* Proteins to be validated (7)  
 >* TnpB (59)  
