@@ -83,7 +83,7 @@ auc_pred(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_ROC
 pr_curve(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_PR_curve.jpg')
 ```
 
-! [ESM_PR_curve.jpg] (figure/ESM_PR_curve.jpg)
+
 
 * The CSV file of predicted score.
 
@@ -105,12 +105,14 @@ The output contains:
 ```
 roc_curve(list(test_lable),list(pred_score))
 ```
+![ESM_test_ROC.jpg](figure/ESM_test_ROC.jpg)
 
 * The precision/recall curve.
 
 ```
 pr_curve(list(pred_score),list(test_lable),feature+'_PR_curve.jpg')
 ```
+![ESM_PR_curve.jpg](figure/ESM_PR_curve.jpg)
 
 * The csv file of predicted score.
 
