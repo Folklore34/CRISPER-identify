@@ -2,8 +2,8 @@ Anti-CRISPER Protein identification
 ===
 Dataset collections
 -------
-Train data
---
+## Train data
+
 For positive samples, 480 experimental verified RGENs were collected from literature.
 And by CD-HIT (setting 70% threshold), finally 389 RGENs samples were filtered.        
 For negative samples, samples were collected based on the following criteria:
@@ -21,8 +21,8 @@ The composition of positive samples and negative samples are listed below.
 
 `719 Class II CRISPR-Cas accessory proteins / Class I CRIPSR-Case `
 
-Test data
-----
+## Test data
+
 Totally,102 positive samples were collected and the composition of negative samples are listed below.
 >* BEST (18)  
 >* Proteins to be validated (7)  
@@ -30,7 +30,7 @@ Totally,102 positive samples were collected and the composition of negative samp
 >* Fanzor (11)  
 >* Cas12n (7)  
 
-Totally,330 negative samples were collected and the composition of positive samples are listed below.  
+Totally,330 negative samples were collected and the composition of negative samples are listed below.  
 
 `Class II CRISPR-Cas accessory proteins / Class I CRIPSR-Cas`
 
@@ -40,14 +40,70 @@ Usages
 First, you need to download and prepare the data that you require form train data set. 
 After preparing the features in training dataset, download the code folder. Before utilizing the python scripts, you need to input the corresponding positive samples file, negative samples file and feature name. For using the ESM feature, if you want to decide the columns of feature selections in advance, you also need to input in `mrmrK`.  
 
-The output includes:
+The output will contain:
 
-Validation performances of 5-fold cross validation. (training set)  
-Test performance.  
+A matrix demonstrates validation performances of 5-fold cross validation. 
 
-The ROC image of the training dataset.
+```metrics_cols = ['PRE','REC','SPE','F1_score','ACC','MCC','AUC']
+validation_performance=pd.DataFrame(per,columns=metrics_cols)
+validation_performance.loc[5]=list(mean_per)
+validation_performance.loc[6]=list(np.std(per,axis=0))
+validation_performance.insert(0,'Category',['fold1','fold2','fold3','fold4','fold5','mean','std'])
+```
 
-The ROC image and test predict score of the test dataset.
+The ROC curve of the training dataset based on the result of cross validation.
+
+```
+ROC_5_fold(y_pred_valid_all,y_verified_valid_all,feature_name+'_ROC_5_fold.jpg')
+```
+
+The ROC curve of the test dataset.
+
+```
+auc_pred(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_ROC.jpg')
+```
+
+The precision/recall curve.
+
+```
+pr_curve(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_PR_curve.jpg')
+```
+
+The CSV file of predicted score.
+
+```pred_test=pd.DataFrame({'Predict score':test_pred_score,'Verified':test_data.iloc[:,0]}).reset_index(drop=True)
+pred_test.to_csv(feature_name+'_Test_Pred_Score.csv',index=None)
+
+test_performance=performance(test_data.iloc[:,0],test_pred_score)
+```
+
+
+## Test set
+You need to input the corresponding test data file, feature name and the direction path of the training model.
+
+The output contains:
+
+The ROC image of the test dataset.
+
+```
+roc_curve(list(test_lable),list(pred_score))
+```
+
+The precision/recall curve.
+
+```
+pr_curve(list(pred_score),list(test_lable),feature+'_PR_curve.jpg')
+```
+
+The csv file of predicted score.
+
+```
+pred_df = pd.DataFrame({'Predict score':pred_score,'Verified':test_lable})
+```
+
+
+
+
 
 
 
