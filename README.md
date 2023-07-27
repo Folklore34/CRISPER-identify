@@ -106,8 +106,7 @@ The output contains:
 roc_curve(list(test_lable),list(pred_score))
 ```
 
-![ESM_test_ROC.jpg](figure/ESM_test_ROC/jpg)
-
+![ESM_test_ROC.jpg](figure/ESM_test_ROC.jpg)
 * The precision/recall curve.
 
 ```
