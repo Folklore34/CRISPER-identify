@@ -57,6 +57,7 @@ validation_performance.insert(0,'Category',['fold1','fold2','fold3','fold4','fol
 ```
 ROC_5_fold(y_pred_valid_all,y_verified_valid_all,feature_name+'_ROC_5_fold.jpg')
 ```
+![ ESM_ROC_5_fold.jpg](figure/ESM_ROC_5_fold.jpg)
 
 * A matrix contains the result of the test performance.
 ```
@@ -74,11 +75,14 @@ test_performance.to_csv(feature_name+'_Test_Performance.csv',index=None)
 auc_pred(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_ROC.jpg')
 ```
 
+
 * The precision/recall curve.
 
 ```
 pr_curve(list(test_pred_score),list(test_data.iloc[:,0]),feature_name+'_Test_PR_curve.jpg')
 ```
+![ ESM_PR_curve.jpg](figure/ESM_PR_curve.jpg)
+
 
 * The CSV file of predicted score.
 
